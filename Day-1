@@ -1,0 +1,41 @@
+create database mnnit;
+use mnnit;
+create table employee
+(id int primary key , name varchar (50) , manager_id int );
+insert into employee
+(id , name , manager_id )
+values
+(101 , "BOB" , 103),
+(102 , "ADAM" , 104),
+(103 , "CASSEY" , null) , 
+(104 , "DONALD" , 103) ;
+create table course
+(id  int primary key , course varchar (50) );
+insert into course (id , course)
+values
+(102 ,  "English"),
+(105 , "Maths" ) , 
+(103 , "Science") , 
+(107 , "Computer Science");
+select * from student;
+select * from course;
+select * from student
+left join course
+on student.id = course.id
+union
+select * from student
+right join course
+on student.id = course.id;
+
+select * from student 
+left join course
+on student.id = course.id
+where course.id is null ;
+
+select A.name as Manager_name , B.name 
+from employee as A
+join employee as B 
+on A.id = B.manager_id ;
+select name from employee
+ union all
+ select name from employee;
